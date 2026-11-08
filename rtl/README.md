@@ -6,4 +6,4 @@ This folder contains the APB slave RTL design.
 - APB Slave Design
 
 ## Language
-- SystemVerilog 
+- SystemVerilog
