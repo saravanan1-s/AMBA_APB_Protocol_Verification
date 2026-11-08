@@ -1,0 +1,22 @@
+class apb_write_read extends apb_generator;
+   //apb_transaction tr;
+  // mailbox gdmbx;
+   function new(mailbox gdmbx);
+      super.new(gdmbx);
+   endfunction : new
+   
+   task run();
+      repeat(10) begin
+         tr.randomize() with {tr.pwrite==1;};
+         tr.disp("GEN");
+         gdmbx.put(tr);
+         @(e1);
+      end
+      repeat(10) begin
+         tr.randomize() with {tr.pwrite==0;tr.pwdata==0;};
+         tr.disp("gEN");
+         gdmbx.put(tr);
+         @(e1);
+      end
+   endtask : run
+endclass : apb_write_read
